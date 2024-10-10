@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Créer un projet</h2>
+
+<mat-dialog-content style="max-width: 500px" class="mat-typography m-t-24">
+  <form #userForm="ngForm">
+    <div class="row">
+
+      <div class="col-sm-6 col-lg-12">
+        <label> Nom du projet :</label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input type="text" matInput required id="name" name="name" [(ngModel)]="local_data.name" placeholder="Visiplus" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6 col-lg-12">
+        <label>Description du projet :</label>
+        <mat-form-field appearance="outline" class="w-100">
+          <!-- Correction ici: Remplacement de 'subtext' par 'description' -->
+          <textarea matInput required id="description" name="description" [(ngModel)]="local_data.description"
+            placeholder="Entrez la description du projet" rows="5"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6 col-lg-12">
+        <label>Date de début :</label>
+        <mat-form-field appearance="outline" class="w-100">
+          <!-- Correction ici: Remplacement de 'date' par 'startDate' -->
+          <input placeholder="Date" [matDatepicker]="picker" matInput required id="startDate" name="startDate" [(ngModel)]="local_data.startDate" />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions class="p-24 p-t-0">
+  <button mat-flat-button (click)="doAction()" color="primary">
+    Créer
+  </button>
+  <button mat-stroked-button color="warn" (click)="closeDialog()">
+    Annuler
+  </button>
+</div>
